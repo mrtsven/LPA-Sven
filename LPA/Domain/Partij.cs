@@ -9,7 +9,7 @@ namespace LPA.Domain
     public class Partij
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public string naam { get; set; }
         public string lijsttrekker { get; set; }
     }
 }

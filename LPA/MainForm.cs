@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LPA.Controllers;
 
 namespace LPA
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        PartijController partijController;
+        public MainForm()
         {
             InitializeComponent();
+            MessageBox.Show(partijController.getPartij().ToString());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
