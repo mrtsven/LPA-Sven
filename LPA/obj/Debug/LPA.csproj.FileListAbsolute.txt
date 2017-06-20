@@ -1,4 +1,3 @@
-C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.csprojResolveAssemblyReference.cache
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.Properties.Resources.resources
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.csproj.GenerateResource.Cache
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.MainForm.resources
@@ -7,3 +6,5 @@ C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\bin\Debug\LPA.exe
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\bin\Debug\LPA.pdb
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.exe
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.pdb
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.csprojResolveAssemblyReference.cache
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.CreatePartijForm.resources

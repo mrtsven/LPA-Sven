@@ -3,3 +3,13 @@ C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\ne
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LpaUnitTest.runtimeconfig.dev.json
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\obj\Debug\netcoreapp1.1\LpaUnitTest.csprojResolveAssemblyReference.cache
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\obj\Debug\netcoreapp1.1\LpaUnitTest.AssemblyInfo.cs
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LpaUnitTest.dll
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LpaUnitTest.pdb
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LPA.exe
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LPA.pdb
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LPA.exe.config
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\obj\Debug\netcoreapp1.1\LpaUnitTest.dll
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\obj\Debug\netcoreapp1.1\LpaUnitTest.pdb

@@ -12,7 +12,7 @@ namespace LPA.Repositories
         public SqlConnection databaseConnection;
         public void Connect()
         {
-            databaseConnection = new SqlConnection("Server=127.0.0.1;Database=LPA;User Id=lpa;Password=qazqaz2;");
+            databaseConnection = new SqlConnection("Server=127.0.0.1;Database=LPA;User Id=sa;Password=qazqaz2;");
             try
             {
                 databaseConnection.Open();

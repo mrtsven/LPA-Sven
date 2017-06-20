@@ -14,12 +14,22 @@ namespace LPA
     public partial class MainForm : Form
     {
         private PartijController partijCon = new PartijController();
+        private CoalitieController coalitieCon = new CoalitieController();
         public MainForm()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            lbOverview.Items.Add(partijCon.getPartij());
+        }
+
+        private void btnNieuwePartij_Click(object sender, EventArgs e)
         {
 
         }

@@ -48,6 +48,12 @@
     <Compile Include="Controllers\CoalitieController.cs" />
     <Compile Include="Controllers\PartijController.cs" />
     <Compile Include="Controllers\UitslagController.cs" />
+    <Compile Include="CreatePartijForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePartijForm.Designer.cs">
+      <DependentUpon>CreatePartijForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Domain\Coalitie.cs" />
     <Compile Include="Domain\Partij.cs" />
     <Compile Include="Domain\Uitslag.cs" />
@@ -63,6 +69,9 @@
     <Compile Include="Repositories\IConnection.cs" />
     <Compile Include="Repositories\IWorkRepo.cs" />
     <Compile Include="Repositories\WorkRepo.cs" />
+    <EmbeddedResource Include="CreatePartijForm.resx">
+      <DependentUpon>CreatePartijForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
