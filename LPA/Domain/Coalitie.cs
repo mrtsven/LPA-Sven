@@ -8,5 +8,8 @@ namespace LPA.Domain
 {
     public class Coalitie
     {
+        public int id { get; set; }
+        public List<Partij> formatie { get; set; }
+        public string premier { get; set; }
     }
 }
