@@ -13,11 +13,10 @@ namespace LPA
 {
     public partial class MainForm : Form
     {
-        PartijController partijController;
+        private PartijController partijCon = new PartijController();
         public MainForm()
         {
             InitializeComponent();
-            MessageBox.Show(partijController.getPartij().ToString());
         }
 
         private void Form1_Load(object sender, EventArgs e)

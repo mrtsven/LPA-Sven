@@ -8,13 +8,39 @@ using System.Threading.Tasks;
 
 namespace LPA.Repositories
 {
-    public class PartijRepo : IPartijRepo
+    public class WorkRepo : IWorkRepo
     {
         IConnection connection;
-        public PartijRepo(IConnection connection)
+        public WorkRepo(IConnection connection)
         {
             this.connection = connection;
         }
+
+        public void createCoalitie(List<Coalitie> coalitieLijst)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void createPartij(string naam, string lijsttrekker)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void createUitslag(List<Partij> partijen, int stemmers, int zetels)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deletePartij(string naam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Coalitie> getCoalitie()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Partij> getPartij()
         {
             List<Partij> partijLijst = new List<Partij>();
@@ -31,6 +57,7 @@ namespace LPA.Repositories
             connection.disConnect();
             return partijLijst;
         }
+
         private Partij CreatePartijFromReader(SqlDataReader reader)
         {
             Partij partij = new Partij
@@ -41,5 +68,11 @@ namespace LPA.Repositories
             };
             return partij;
         }
+
+        public List<Uitslag> getUitslag()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

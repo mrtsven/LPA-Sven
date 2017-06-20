@@ -1,0 +1,5 @@
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LpaUnitTest.deps.json
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LpaUnitTest.runtimeconfig.json
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\bin\Debug\netcoreapp1.1\LpaUnitTest.runtimeconfig.dev.json
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\obj\Debug\netcoreapp1.1\LpaUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LpaUnitTest\obj\Debug\netcoreapp1.1\LpaUnitTest.AssemblyInfo.cs

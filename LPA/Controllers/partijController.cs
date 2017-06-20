@@ -10,14 +10,23 @@ namespace LPA.Controllers
 {
     public class PartijController
     {
-        PartijRepo partijRepo;
+        WorkRepo workRepo;
         public PartijController()
         {
-            partijRepo = new PartijRepo(new Connection());
+            workRepo = new WorkRepo(new Connection());
         }
         public List<Partij> getPartij()
         {
-            return partijRepo.getPartij();
+            return workRepo.getPartij();
+        }
+
+        public void createPartij(string naam, string lijsttrekker)
+        {
+            workRepo.createPartij(naam, lijsttrekker);
+        }
+        public void deletePartij(string naam)
+        {
+            workRepo.deletePartij(naam);
         }
     }
 }
