@@ -61,5 +61,14 @@ namespace LPA
             this.Show();
             refreshGrid();
         }
+
+        private void btnNieuwUitslag_Click(object sender, EventArgs e)
+        {
+            NieuweUitslagForm nieuwUitslag = new NieuweUitslagForm();
+            this.Hide();
+            nieuwUitslag.ShowDialog();
+            this.Show();
+            refreshGrid();
+        }
     }
 }

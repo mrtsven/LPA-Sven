@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LPA.Domain;
+using System.Data.SqlClient;
 
 namespace LPA.Repositories
 {
@@ -15,14 +16,39 @@ namespace LPA.Repositories
             this.connection = connection;
         }
 
-        public void createUitslag(List<Partij> partijen, int stemmers, int zetels)
+        // int IDPartij, int stemmen
+        public void createUitslag(string uitslagNaam, string datum)
         {
-            throw new NotImplementedException();
+            SqlCommand sqlCommand = new SqlCommand("NieuweUitslag", connection.getConnection());
+
+            connection.Connect();
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@UitslagNaam", uitslagNaam);
+            sqlCommand.Parameters.AddWithValue("@Datum", datum);
+
+            sqlCommand.Connection = connection.getConnection();
+
+            sqlCommand.ExecuteNonQuery();
         }
 
         public List<Uitslag> getUitslag()
         {
             throw new NotImplementedException();
+        }
+
+        public void voegStemmenIn(int idPartij, int stemmen, string uitslagNaam)
+        {
+            SqlCommand sqlCommand = new SqlCommand("StemmenInvoeren", connection.getConnection());
+
+            connection.Connect();
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@IDPartij", idPartij);
+            sqlCommand.Parameters.AddWithValue("@Stemmen", stemmen);
+            sqlCommand.Parameters.AddWithValue("@UitslagNaam", uitslagNaam);
+
+            sqlCommand.Connection = connection.getConnection();
+
+            sqlCommand.ExecuteNonQuery();
         }
     }
 }

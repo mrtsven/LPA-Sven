@@ -63,6 +63,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NieuweUitslagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NieuweUitslagForm.Designer.cs">
+      <DependentUpon>NieuweUitslagForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartijWijzigenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NieuweUitslagForm.resx">
+      <DependentUpon>NieuweUitslagForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartijWijzigenForm.resx">
       <DependentUpon>PartijWijzigenForm.cs</DependentUpon>

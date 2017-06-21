@@ -14,7 +14,7 @@ namespace LPA.Domain
 
         public override string ToString()
         {
-            return naam + lijsttrekker;
+            return naam;
         }
     }
 

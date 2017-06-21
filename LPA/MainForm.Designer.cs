@@ -36,6 +36,7 @@
             this.Naam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LijstTrekker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Zetels = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNieuwUitslag = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgMainView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,11 +112,22 @@
             this.Zetels.ReadOnly = true;
             this.Zetels.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // btnNieuwUitslag
+            // 
+            this.btnNieuwUitslag.Location = new System.Drawing.Point(640, 222);
+            this.btnNieuwUitslag.Name = "btnNieuwUitslag";
+            this.btnNieuwUitslag.Size = new System.Drawing.Size(166, 57);
+            this.btnNieuwUitslag.TabIndex = 5;
+            this.btnNieuwUitslag.Text = "Nieuwe Uitslag";
+            this.btnNieuwUitslag.UseVisualStyleBackColor = true;
+            this.btnNieuwUitslag.Click += new System.EventHandler(this.btnNieuwUitslag_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 511);
+            this.Controls.Add(this.btnNieuwUitslag);
             this.Controls.Add(this.btnWijzigPartij);
             this.Controls.Add(this.dgMainView);
             this.Controls.Add(this.btnNieuwePartij);
@@ -137,6 +149,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Naam;
         private System.Windows.Forms.DataGridViewTextBoxColumn LijstTrekker;
         private System.Windows.Forms.DataGridViewTextBoxColumn Zetels;
+        private System.Windows.Forms.Button btnNieuwUitslag;
     }
 }
 

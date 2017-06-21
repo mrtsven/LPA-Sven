@@ -9,7 +9,9 @@ namespace LPA.Repositories
 {
     public interface IUitslagRepo
     {
-        void createUitslag(List<Partij> partijen, int stemmers, int zetels);
+        //, int IDPartij, int stemmen
+        void createUitslag(string uitslagNaam, string datum);
+        void voegStemmenIn(int idPartij, int stemmen, string uitslagNaam);
         List<Uitslag> getUitslag();
     }
 }

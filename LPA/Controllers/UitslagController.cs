@@ -16,14 +16,19 @@ namespace LPA.Controllers
             uitslagRepo = new UitslagRepo(new Connection());
         }
 
-        public void createUitslag(List<Partij> partijen, int stemmers, int zetels)
+        public void createUitslag(string uitslagNaam, string datum)
         {
-            uitslagRepo.createUitslag(partijen, stemmers, zetels);
+            uitslagRepo.createUitslag(uitslagNaam, datum);
         }
 
         public List<Uitslag> getUitslag()
         {
             return uitslagRepo.getUitslag();
+        }
+
+        public void voegStemmenIn(int idPartij, int stemmen, string uitslagNaam)
+        {
+            uitslagRepo.voegStemmenIn(idPartij, stemmen, uitslagNaam);
         }
     }
 }
