@@ -11,5 +11,10 @@ namespace LPA.Domain
         public int id { get; set; }
         public string naam { get; set; }
         public string datum { get; set; }
+
+        public override string ToString()
+        {
+            return naam;
+        }
     }
 }

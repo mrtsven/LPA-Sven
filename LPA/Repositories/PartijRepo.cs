@@ -31,7 +31,14 @@ namespace LPA.Repositories
 
         public void deletePartij(string naam)
         {
-            throw new NotImplementedException();
+            connection.Connect();
+            SqlCommand sqlCommand = new SqlCommand("DELETE FROM Partij WHERE naam like @naam", connection.getConnection());
+
+            sqlCommand.Parameters.AddWithValue("@naam", naam);
+
+            sqlCommand.Connection = connection.getConnection();
+
+            sqlCommand.ExecuteNonQuery();
         }
 
         public List<Partij> getPartij()
@@ -62,11 +69,46 @@ namespace LPA.Repositories
             return partij;
         }
 
+        public void zetelUpdate(Partij partij)
+        {
+            SqlCommand command = new SqlCommand("UPDATE Uitslag_Partij SET votes = @votes, seats = @seats WHERE id = @id", connection.getConnection());
+            command.Parameters.AddWithValue("@stem", partij.stemmers);
+            command.Parameters.AddWithValue("@zetel", partij.zetels);
+            command.Parameters.AddWithValue("@id", partij.id);
+
+            command.ExecuteNonQuery();
+        }
+
+        private int AlleStemmers(int uitslagID)
+        {
+            connection.Connect();
+            SqlCommand sqlCommand = new SqlCommand("SELECT SUM(Stemmen) FROM Uitslag_Partij INNER JOIN Uitslag u on FK_IDUitslag = u.ID WHERE u.id = @uitslagID", connection.getConnection());
+            sqlCommand.Parameters.AddWithValue("@uitslagID", uitslagID);
+           int result = (int)sqlCommand.ExecuteScalar();
+            connection.disConnect();
+            return result;
+        }
+
+        public void Zetels(int uitslagID)
+        {
+            int totaal_Stemmers = AlleStemmers(uitslagID);
+            List<Partij> partijLijst = new List<Partij>();
+            foreach (Partij partij in partijLijst)
+            {
+                decimal bstem = Convert.ToDecimal(partij.stemmers);
+                decimal btotaalStem = Convert.ToDecimal(totaal_Stemmers);
+                decimal bTotaalZetels = Convert.ToDecimal(150);
+
+                partij.zetels = Convert.ToInt32(Math.Floor(bstem / btotaalStem * bTotaalZetels));
+                zetelUpdate(partij);
+            }
+        }
+
         public List<Partij> getPartijMet(int uitslagID)
         {
             List<Partij> partijLijst = new List<Partij>();
             connection.Connect();
-            SqlCommand sqlCommand = new SqlCommand("SELECT p.ID, p.Lijsttrekker, p.Naam, up.Stemmen FROM Partij p INNER JOIN Uitslag_Partij up on ID = up.FK_IDPartij INNER JOIN Uitslag u on FK_IDUitslag = u.ID WHERE u.id = @uitslagID", connection.getConnection());
+            SqlCommand sqlCommand = new SqlCommand("SELECT p.ID, p.Lijsttrekker, p.Naam, up.Stemmen, up.Zetels FROM Partij p INNER JOIN Uitslag_Partij up on ID = up.FK_IDPartij INNER JOIN Uitslag u on FK_IDUitslag = u.ID WHERE u.id = @uitslagID", connection.getConnection());
             sqlCommand.Parameters.AddWithValue("@uitslagID", uitslagID);
             using (SqlDataReader reader = sqlCommand.ExecuteReader())
             {
@@ -87,7 +129,8 @@ namespace LPA.Repositories
                 id = Convert.ToInt32(reader["ID"]),
                 naam = Convert.ToString(reader["naam"]),
                 lijsttrekker = Convert.ToString(reader["lijsttrekker"]),
-                stemmers = Convert.ToInt32(reader["Stemmen"])
+                stemmers = Convert.ToInt32(reader["Stemmen"]),
+                zetels = Convert.ToInt32(reader["zetels"])
             };
             return partij;
         }

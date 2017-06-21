@@ -15,6 +15,17 @@ namespace LPA.Controllers
         {
             partijRepo = new PartijRepo(new Connection());
         }
+
+
+        public void Zetels(int uitslagID)
+        {
+            partijRepo.Zetels(uitslagID);
+        }
+        public void zetelUpdate(Partij partij)
+        {
+            partijRepo.zetelUpdate(partij);
+        }
+
         public List<Partij> getPartijMet(int uitslagID)
         {
             return partijRepo.getPartijMet(uitslagID);

@@ -17,32 +17,15 @@ namespace LPA
         private PartijController partijCon = new PartijController();
         private CoalitieController coalitieCon = new CoalitieController();
         private UitslagController uitslagCon = new UitslagController();
+
+        List<int> zetelLijst = new List<int>();
         public MainForm()
         {
             InitializeComponent();
             foreach (Uitslag item in uitslagCon.getUitslag())
             {
-                cbUitslagKiezen.Items.Add(item.naam);
+                cbUitslagKiezen.Items.Add(item);
             }
-        }
-
-        public List<int> ZetelsCount(int uitslagID)
-        {
-            int totaalStem;
-            List<Partij> lijstMet = new List<Partij>();
-            List<int> zetelLijst = new List<int>();
-            partijCon.getPartijMet(uitslagID);
-            foreach (var stem in lijstMet)
-            {
-                totaalStem = stem.stemmers;
-                zetelLijst.Add(totaalStem / stem.stemmers * 150);
-
-            }
-
-            
-
-
-            return zetelLijst;
         }
 
         private void refreshGridNoVotes()
@@ -59,16 +42,24 @@ namespace LPA
 
         private void refreshGridWithVotes()
         {
+            int id = (cbUitslagKiezen.SelectedItem as Uitslag).id;
             dgMainView.Rows.Clear();
-            
+
+            partijCon.Zetels(id);
+            foreach(Partij partij in partijCon.getPartijMet(id))
+            {
+            partijCon.zetelUpdate(partij);
+            }
+
+
             dgMainView.Columns[3].Visible = true;
             dgMainView.Columns[4].Visible = true;
-            int id = cbUitslagKiezen.SelectedIndex + 1;
-            ZetelsCount(id);
+
             foreach (Partij item in partijCon.getPartijMet(id))
             {
-                dgMainView.Rows.Add(item.id, item.naam, item.lijsttrekker, item.stemmers);
+                dgMainView.Rows.Add(item.id, item.naam, item.lijsttrekker, item.stemmers, item.zetels);
             }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

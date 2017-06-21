@@ -24,7 +24,7 @@ namespace LPA
             //test
             foreach (Partij item in partijCon.getPartij())
             {
-                cbPartij.Items.Add(item.ToString());
+                cbPartij.Items.Add(item);
                 cbPartij.SelectedIndex = 0;
             }
         }
@@ -47,9 +47,9 @@ namespace LPA
 
         private void btnInvoerStem_Click(object sender, EventArgs e)
         { 
-            int id = cbPartij.SelectedIndex + 1;
-            var selectedID = cbPartij.SelectedItem as Partij;
-            //uitslagCon.voegStemmenIn(id, Convert.ToInt32(nStemmen.Value), txtUitslagNaam.Text);
+
+            int selectedID = (cbPartij.SelectedItem as Partij).id;
+            uitslagCon.voegStemmenIn(selectedID, Convert.ToInt32(nStemmen.Value), txtUitslagNaam.Text);
         }
     }
 }

@@ -11,6 +11,8 @@ namespace LPA.Repositories
     {
         List<Partij> getPartijMet(int uitslagID);
         List<Partij> getPartij();
+        void Zetels(int uitslagID);
+        void zetelUpdate(Partij partij);
         void createPartij(string naam, string lijsttrekker);
         void deletePartij(string naam);
         void updatePartij(string naam, string nieuwenaam, string nieuwelijsttrekker);

@@ -12,7 +12,7 @@ namespace LPA.Repositories
         public SqlConnection databaseConnection;
         public void Connect()
         {
-            databaseConnection = new SqlConnection("Server=127.0.0.1;Database=LPA;User Id=sa;Password=qazqaz2;");
+            databaseConnection = new SqlConnection("Server=mssql.fhict.local;Database=dbi376400;User Id=dbi376400;Password=qazqaz2;");
             try
             {
                 databaseConnection.Open();

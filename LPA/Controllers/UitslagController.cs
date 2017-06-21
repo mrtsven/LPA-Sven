@@ -31,4 +31,5 @@ namespace LPA.Controllers
             uitslagRepo.voegStemmenIn(idPartij, stemmen, uitslagNaam);
         }
     }
+
 }
