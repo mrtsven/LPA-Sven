@@ -15,6 +15,11 @@ namespace LPA.Controllers
         {
             partijRepo = new PartijRepo(new Connection());
         }
+        public List<Partij> getPartijMet(int uitslagID)
+        {
+            return partijRepo.getPartijMet(uitslagID);
+        }
+
         public List<Partij> getPartij()
         {
             return partijRepo.getPartij();

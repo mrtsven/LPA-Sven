@@ -9,6 +9,7 @@ namespace LPA.Repositories
 {
     public interface IPartijRepo
     {
+        List<Partij> getPartijMet(int uitslagID);
         List<Partij> getPartij();
         void createPartij(string naam, string lijsttrekker);
         void deletePartij(string naam);

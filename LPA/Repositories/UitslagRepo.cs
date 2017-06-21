@@ -19,21 +19,45 @@ namespace LPA.Repositories
         // int IDPartij, int stemmen
         public void createUitslag(string uitslagNaam, string datum)
         {
-            SqlCommand sqlCommand = new SqlCommand("NieuweUitslag", connection.getConnection());
+                SqlCommand sqlCommand = new SqlCommand("NieuweUitslag", connection.getConnection());
 
-            connection.Connect();
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@UitslagNaam", uitslagNaam);
-            sqlCommand.Parameters.AddWithValue("@Datum", datum);
+                connection.Connect();
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@UitslagNaam", uitslagNaam);
+                sqlCommand.Parameters.AddWithValue("@Datum", datum);
 
-            sqlCommand.Connection = connection.getConnection();
+                sqlCommand.Connection = connection.getConnection();
 
-            sqlCommand.ExecuteNonQuery();
+                sqlCommand.ExecuteNonQuery();
         }
 
         public List<Uitslag> getUitslag()
         {
-            throw new NotImplementedException();
+            List<Uitslag> uitslagLijst = new List<Uitslag>();
+            connection.Connect();
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Uitslag", connection.getConnection());
+            using (SqlDataReader reader = sqlCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    uitslagLijst.Add(CreateUitslagFromReader(reader));
+                }
+            }
+
+            connection.disConnect();
+            return uitslagLijst;
+        }
+
+        private Uitslag CreateUitslagFromReader(SqlDataReader reader)
+        {
+            Uitslag uitslag = new Uitslag
+            {
+                id = Convert.ToInt32(reader["ID"]),
+                naam = Convert.ToString(reader["uitslagnaam"]),
+                datum = Convert.ToString(reader["datum"])
+
+            };
+            return uitslag;
         }
 
         public void voegStemmenIn(int idPartij, int stemmen, string uitslagNaam)

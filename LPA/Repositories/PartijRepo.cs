@@ -18,7 +18,15 @@ namespace LPA.Repositories
 
         public void createPartij(string naam, string lijsttrekker)
         {
-            throw new NotImplementedException();
+            connection.Connect();
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO Partij (naam, lijsttrekker) VALUES (@naam, @lijsttrekker)", connection.getConnection());
+
+            sqlCommand.Parameters.AddWithValue("@naam", naam);
+            sqlCommand.Parameters.AddWithValue("@lijsttrekker", lijsttrekker);
+
+            sqlCommand.Connection = connection.getConnection();
+
+            sqlCommand.ExecuteNonQuery();
         }
 
         public void deletePartij(string naam)
@@ -30,7 +38,7 @@ namespace LPA.Repositories
         {
             List<Partij> partijLijst = new List<Partij>();
             connection.Connect();
-            SqlCommand sqlCommand = new SqlCommand("SELECT * from Partij", connection.getConnection());
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Partij", connection.getConnection());
             using (SqlDataReader reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -49,7 +57,37 @@ namespace LPA.Repositories
             {
                 id = Convert.ToInt32(reader["ID"]),
                 naam = Convert.ToString(reader["naam"]),
+                lijsttrekker = Convert.ToString(reader["lijsttrekker"])
+            };
+            return partij;
+        }
+
+        public List<Partij> getPartijMet(int uitslagID)
+        {
+            List<Partij> partijLijst = new List<Partij>();
+            connection.Connect();
+            SqlCommand sqlCommand = new SqlCommand("SELECT p.ID, p.Lijsttrekker, p.Naam, up.Stemmen FROM Partij p INNER JOIN Uitslag_Partij up on ID = up.FK_IDPartij INNER JOIN Uitslag u on FK_IDUitslag = u.ID WHERE u.id = @uitslagID", connection.getConnection());
+            sqlCommand.Parameters.AddWithValue("@uitslagID", uitslagID);
+            using (SqlDataReader reader = sqlCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    partijLijst.Add(CreatePartijMetFromReader(reader));
+                }
+            }
+
+            connection.disConnect();
+            return partijLijst;
+        }
+
+        private Partij CreatePartijMetFromReader(SqlDataReader reader)
+        {
+            Partij partij = new Partij
+            {
+                id = Convert.ToInt32(reader["ID"]),
+                naam = Convert.ToString(reader["naam"]),
                 lijsttrekker = Convert.ToString(reader["lijsttrekker"]),
+                stemmers = Convert.ToInt32(reader["Stemmen"])
             };
             return partij;
         }

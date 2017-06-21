@@ -16,15 +16,40 @@ namespace LPA
     {
         private PartijController partijCon = new PartijController();
         private CoalitieController coalitieCon = new CoalitieController();
+        private UitslagController uitslagCon = new UitslagController();
         public MainForm()
         {
             InitializeComponent();
+            foreach (Uitslag item in uitslagCon.getUitslag())
+            {
+                cbUitslagKiezen.Items.Add(item.naam);
+            }
         }
 
-        private void refreshGrid()
+        public List<int> ZetelsCount(int uitslagID)
+        {
+            int totaalStem;
+            List<Partij> lijstMet = new List<Partij>();
+            List<int> zetelLijst = new List<int>();
+            partijCon.getPartijMet(uitslagID);
+            foreach (var stem in lijstMet)
+            {
+                totaalStem = stem.stemmers;
+                zetelLijst.Add(totaalStem / stem.stemmers * 150);
+
+            }
+
+            
+
+
+            return zetelLijst;
+        }
+
+        private void refreshGridNoVotes()
         {
             dgMainView.Rows.Clear();
-            //test
+            dgMainView.Columns[3].Visible = false;
+            dgMainView.Columns[4].Visible = false;
             List<Partij> partijen = new List<Partij>();
             foreach (Partij item in partijCon.getPartij())
             {
@@ -32,13 +57,27 @@ namespace LPA
             }
         }
 
+        private void refreshGridWithVotes()
+        {
+            dgMainView.Rows.Clear();
+            
+            dgMainView.Columns[3].Visible = true;
+            dgMainView.Columns[4].Visible = true;
+            int id = cbUitslagKiezen.SelectedIndex + 1;
+            ZetelsCount(id);
+            foreach (Partij item in partijCon.getPartijMet(id))
+            {
+                dgMainView.Rows.Add(item.id, item.naam, item.lijsttrekker, item.stemmers);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
+        private void btnWithVotes_Click(object sender, EventArgs e)
         {
-            refreshGrid();
+            refreshGridWithVotes();
         }
 
         private void btnNieuwePartij_Click(object sender, EventArgs e)
@@ -59,7 +98,7 @@ namespace LPA
             this.Hide();
             wijzigPartij.ShowDialog();
             this.Show();
-            refreshGrid();
+            refreshGridWithVotes();
         }
 
         private void btnNieuwUitslag_Click(object sender, EventArgs e)
@@ -68,7 +107,12 @@ namespace LPA
             this.Hide();
             nieuwUitslag.ShowDialog();
             this.Show();
-            refreshGrid();
+            refreshGridWithVotes();
+        }
+
+        private void btnAllePartijen_Click(object sender, EventArgs e)
+        {
+            refreshGridNoVotes();
         }
     }
 }
