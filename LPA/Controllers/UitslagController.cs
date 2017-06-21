@@ -10,20 +10,20 @@ namespace LPA.Controllers
 {
     public class UitslagController
     {
-        WorkRepo workRepo;
+        IUitslagRepo uitslagRepo;
         public UitslagController()
         {
-            workRepo = new WorkRepo(new Connection());
+            uitslagRepo = new UitslagRepo(new Connection());
         }
 
         public void createUitslag(List<Partij> partijen, int stemmers, int zetels)
         {
-            workRepo.createUitslag(partijen, stemmers, zetels);
+            uitslagRepo.createUitslag(partijen, stemmers, zetels);
         }
 
         public List<Uitslag> getUitslag()
         {
-            return workRepo.getUitslag();
+            return uitslagRepo.getUitslag();
         }
     }
 }

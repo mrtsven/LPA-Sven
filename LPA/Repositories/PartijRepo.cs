@@ -1,24 +1,19 @@
-﻿using LPA.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LPA.Domain;
+using System.Data.SqlClient;
 
 namespace LPA.Repositories
 {
-    public class WorkRepo : IWorkRepo
+    public class PartijRepo : IPartijRepo
     {
         IConnection connection;
-        public WorkRepo(IConnection connection)
+        public PartijRepo(IConnection connection)
         {
             this.connection = connection;
-        }
-
-        public void createCoalitie(List<Coalitie> coalitieLijst)
-        {
-            throw new NotImplementedException();
         }
 
         public void createPartij(string naam, string lijsttrekker)
@@ -26,17 +21,7 @@ namespace LPA.Repositories
             throw new NotImplementedException();
         }
 
-        public void createUitslag(List<Partij> partijen, int stemmers, int zetels)
-        {
-            throw new NotImplementedException();
-        }
-
         public void deletePartij(string naam)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Coalitie> getCoalitie()
         {
             throw new NotImplementedException();
         }
@@ -69,10 +54,32 @@ namespace LPA.Repositories
             return partij;
         }
 
-        public List<Uitslag> getUitslag()
+        public void updatePartij(string naam, string nieuwenaam, string nieuwelijsttrekker)
         {
-            throw new NotImplementedException();
+            try
+            {
+                connection.Connect();
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Partij SET naam=@newnaam, lijsttrekker=@newlijsttrekker where naam like @naam", connection.getConnection());
+
+                sqlCommand.Parameters.AddWithValue("@naam", naam);
+                sqlCommand.Parameters.AddWithValue("@newnaam", nieuwenaam);
+                sqlCommand.Parameters.AddWithValue("@newlijsttrekker", nieuwelijsttrekker);
+                sqlCommand.Connection = connection.getConnection();
+
+                sqlCommand.ExecuteNonQuery();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                connection.disConnect();
+            }
         }
+
 
     }
 }

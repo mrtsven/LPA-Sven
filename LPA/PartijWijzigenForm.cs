@@ -11,19 +11,19 @@ using System.Windows.Forms;
 
 namespace LPA
 {
-    public partial class CreatePartijForm : Form
+    public partial class PartijWijzigenForm : Form
     {
         PartijController partijCon = new PartijController();
-        public CreatePartijForm()
+        string oudnaam;
+        public PartijWijzigenForm(string oudnaam)
         {
-
             InitializeComponent();
+            this.oudnaam = oudnaam;
         }
 
-        private void btnCreatePartij_Click(object sender, EventArgs e)
+        private void btnWijzig_Click(object sender, EventArgs e)
         {
-            partijCon.createPartij(txtNaam.Text, txtLijstTrekker.Text);
-            MessageBox.Show("Partij aangemaakt!");
+            partijCon.updatePartij(oudnaam, txtNaam.Text, txtLijsttrekker.Text);
         }
     }
 }

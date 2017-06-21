@@ -10,10 +10,10 @@ namespace LPA.Controllers
 {
     public class CoalitieController
     {
-        WorkRepo workRepo;
+        ICoalitieRepo workRepo;
         public CoalitieController()
         {
-            workRepo = new WorkRepo(new Connection());
+            workRepo = new CoalitieRepo(new Connection());
         }
 
         public void createCoalitie(List<Coalitie> coalitie)

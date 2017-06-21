@@ -57,6 +57,7 @@
             this.btnCreatePartij.TabIndex = 2;
             this.btnCreatePartij.Text = "Nieuwe Partij";
             this.btnCreatePartij.UseVisualStyleBackColor = true;
+            this.btnCreatePartij.Click += new System.EventHandler(this.btnCreatePartij_Click);
             // 
             // label1
             // 

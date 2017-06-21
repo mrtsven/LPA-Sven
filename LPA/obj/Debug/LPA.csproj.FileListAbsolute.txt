@@ -8,3 +8,4 @@ C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.exe
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.pdb
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.csprojResolveAssemblyReference.cache
 C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.CreatePartijForm.resources
+C:\Users\Sven\documents\visual studio 2017\Projects\LPA\LPA\obj\Debug\LPA.PartijWijzigenForm.resources
